@@ -1,7 +1,8 @@
 package com.davidorellana;
 
-public class ProductInformation extends PersonalInformation {
+public class ProductInformation  {
 
+    private final String name;
     private final Long id;
     private static Long incrementId = 1L;
     private final PackagingDescription packagingDescription;
@@ -11,13 +12,17 @@ public class ProductInformation extends PersonalInformation {
     private final String imageUrl;
 
     public ProductInformation(String name, PackagingDescription packagingDescription, Category category, String label, Double price, String imageUrl) {
-        super(name);
+        this.name = name;
         this.id = incrementId++;
         this.packagingDescription = packagingDescription;
         this.category = category;
         this.label = label;
         this.price = price;
         this.imageUrl = imageUrl;
+    }
+
+    public String  getName() {
+        return name;
     }
 
     public Long getId() {
@@ -48,7 +53,7 @@ public class ProductInformation extends PersonalInformation {
     public String toString() {
         return "ProductInformation {" +
                 "id:" + id +
-                ", name:" + super.getName() +
+                ", name:" + name +
                 ", packagingDescription:" + packagingDescription +
                 ", category:" + category +
                 ", label:'" + label + '\'' +

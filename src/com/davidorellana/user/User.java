@@ -2,19 +2,18 @@ package com.davidorellana;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class User extends PersonalInformation implements ProductI{
+public class User extends PersonalInformation implements UserProductI{
 
     private final Long id;
     private static Long incrementId = 1L;
-    private final Integer age;
     private final Boolean isOlderAge;
     private final List<ProductInformation> listProducts = new ArrayList<>();
 
-    public User(String name, Integer age, Boolean isOlderAge) {
-        super(name);
+    public User(String name, String lastName, Integer age, Boolean isOlderAge) {
+        super(name, lastName, age);
         this.id = incrementId++;
-        this.age = age;
         this.isOlderAge = isOlderAge;
     }
 
@@ -22,23 +21,20 @@ public class User extends PersonalInformation implements ProductI{
         return id;
     }
 
-    public Integer getAge() {
-        return age;
-    }
 
     @Override
     public String toString() {
         return "User {" +
                 "id:" + id +
                 ", name:" + super.getName() +
-                ", age:" + age +
+                ", age:" + super.getAge() +
                 ", isOlderAge:" + isOlderAge +
                 ", buyProduct:" + List.of(listProducts) +
                 '}';
     }
 
     @Override
-    public boolean addProduct(ProductInformation product) {
+    public boolean buyProduct(ProductInformation product) {
         return listProducts.add(product);
     }
 
