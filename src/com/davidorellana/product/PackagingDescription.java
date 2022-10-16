@@ -1,4 +1,4 @@
-package com.davidorellana;
+package com.davidorellana.product;
 
 public class PackagingDescription {
 

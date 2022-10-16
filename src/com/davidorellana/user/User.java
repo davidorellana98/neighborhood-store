@@ -1,20 +1,21 @@
-package com.davidorellana;
+package com.davidorellana.user;
+
+import com.davidorellana.PersonalInformation;
+import com.davidorellana.product.ProductInformation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class User extends PersonalInformation implements ProductI{
+public class User extends PersonalInformation implements UserProductI {
 
     private final Long id;
-    private static Long incrementId = 1L;
-    private final Integer age;
     private final Boolean isOlderAge;
     private final List<ProductInformation> listProducts = new ArrayList<>();
 
-    public User(String name, Integer age, Boolean isOlderAge) {
-        super(name);
-        this.id = incrementId++;
-        this.age = age;
+    public User(Long id, String name, String lastName, Integer age, Boolean isOlderAge) {
+        super(name, lastName, age);
+        this.id = id;
         this.isOlderAge = isOlderAge;
     }
 
@@ -22,24 +23,23 @@ public class User extends PersonalInformation implements ProductI{
         return id;
     }
 
-    public Integer getAge() {
-        return age;
-    }
 
     @Override
     public String toString() {
         return "User {" +
                 "id:" + id +
                 ", name:" + super.getName() +
-                ", age:" + age +
+                ", age:" + super.getAge() +
                 ", isOlderAge:" + isOlderAge +
                 ", buyProduct:" + List.of(listProducts) +
                 '}';
     }
 
     @Override
-    public boolean addProduct(ProductInformation product) {
-        return listProducts.add(product);
+    public Optional<ProductInformation> buyProduct(String nameProduct) {
+        return listProducts.stream()
+                .filter(product -> product.getName().equalsIgnoreCase(nameProduct))
+                .findAny();
     }
 
     @Override
