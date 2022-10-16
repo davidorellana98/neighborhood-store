@@ -1,19 +1,18 @@
-package com.davidorellana;
+package com.davidorellana.product;
 
 public class ProductInformation  {
 
     private final String name;
     private final Long id;
-    private static Long incrementId = 1L;
     private final PackagingDescription packagingDescription;
     private final Category category;
     private final String label;
     private final Double price;
     private final String imageUrl;
 
-    public ProductInformation(String name, PackagingDescription packagingDescription, Category category, String label, Double price, String imageUrl) {
+    public ProductInformation(Long id, String name, PackagingDescription packagingDescription, Category category, String label, Double price, String imageUrl) {
         this.name = name;
-        this.id = incrementId++;
+        this.id = id;
         this.packagingDescription = packagingDescription;
         this.category = category;
         this.label = label;
@@ -21,12 +20,12 @@ public class ProductInformation  {
         this.imageUrl = imageUrl;
     }
 
-    public String  getName() {
-        return name;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public String  getName() {
+        return name;
     }
 
     public PackagingDescription getPackagingDescription() {
