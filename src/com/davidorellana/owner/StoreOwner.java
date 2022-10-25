@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
 
-public class StoreOwner extends PersonalInformation implements ShopProductI {
+public class StoreOwner extends PersonalInformation implements ProductServiceI {
 
     private final List<ProductInformation> listProducts = new ArrayList<>();
 
@@ -17,24 +17,27 @@ public class StoreOwner extends PersonalInformation implements ShopProductI {
     }
 
     @Override
-    public Boolean createNewProduct(ProductInformation newProduct) {
-        return listProducts.add(newProduct);
+    public Boolean addProduct(ProductInformation product) {
+        return listProducts.add(product);
     }
 
     @Override
-    public Optional<ProductInformation> findProductByNameAndId(Long id, String name) {
+    public Optional<ProductInformation> findProductById(Long id) {
         return listProducts.stream()
                 .filter(productId -> productId.getId().equals(id))
+                .findAny();
+    }
+
+    @Override
+    public Optional<ProductInformation> findProductByName(String name) {
+        return listProducts.stream()
                 .filter(productName -> productName.getName().equalsIgnoreCase(name))
                 .findAny();
     }
 
     @Override
-    public ProductInformation updateProductInformation(Long id, ProductInformation product) {
-        if (listProducts.contains(id)) {
-            listProducts.add(product);
-        }
-        return product;
+    public ProductInformation updateProductInformation(ProductInformation product) {
+        return  listProducts.set(product.getId().intValue(), product);
     }
 
     @Override
@@ -49,5 +52,20 @@ public class StoreOwner extends PersonalInformation implements ShopProductI {
             }
         }
         return assistantProduct;
+    }
+
+    @Override
+    public String deleteProduct(ProductInformation product) {
+        if (listProducts.isEmpty()) {
+            return "Product list empty, there are no products to delete.";
+        } else {
+            listProducts.remove(product);
+            return "Product " + product.getId() + " removed";
+        }
+    }
+
+    @Override
+    public List<ProductInformation> getAllProducts() {
+        return listProducts;
     }
 }
