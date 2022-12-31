@@ -1,0 +1,10 @@
+com\davidorellana\user\UserProductI.class
+com\davidorellana\product\PackagingDescription.class
+com\davidorellana\owner\StoreOwner.class
+com\davidorellana\csv\ReadFileCsv.class
+com\davidorellana\product\Category.class
+com\davidorellana\Main.class
+com\davidorellana\user\User.class
+com\davidorellana\PersonalInformation.class
+com\davidorellana\product\ProductInformation.class
+com\davidorellana\owner\ProductServiceI.class
