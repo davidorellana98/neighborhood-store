@@ -2,13 +2,14 @@ package com.davidorellana;
 
 import com.davidorellana.owner.StoreOwner;
 import com.davidorellana.product.Category;
+import com.davidorellana.product.MeasureUnit;
 import com.davidorellana.product.PackagingDescription;
 import com.davidorellana.product.ProductInformation;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("***** Product 0 *****");
-        PackagingDescription packagingDescription = new PackagingDescription("Bolsa", 11000.0, "ml");
+        PackagingDescription packagingDescription = new PackagingDescription("Bolsa", 11000.0, MeasureUnit.ML);
         Category category = new Category("Lacteo/Huevos", true);
         ProductInformation productInformation = new ProductInformation(0L,"Leche Entera Apina", packagingDescription, category, "Leche", 3100.0, "https://www.eurosupermercados.com/eurosupermercado2020//contenidos/images/ecommerce_productos/7702001041404.jpg");
         StoreOwner storeOwner = new StoreOwner("Camila", "Ordoñez",35);
@@ -21,7 +22,7 @@ public class Main {
         System.out.println("Product search by id: " + storeOwner.findProductById(0L));
 
         System.out.println("***** Product 1 *****");
-        PackagingDescription packagingDescriptionOne = new PackagingDescription("Caja", 1000.0, "ml");
+        PackagingDescription packagingDescriptionOne = new PackagingDescription("Caja", 1000.0, MeasureUnit.ML);
         Category categoryOne = new Category("Vinos y Licores", false);
         ProductInformation productInformationOne = new ProductInformation(1L,"Aguardiente Antiqueño Verde", packagingDescriptionOne, categoryOne, "Aguardeinte", 45600.0, "https://metrocolombiafood.vteximg.com.br/arquivos/ids/259143-1000-1000/7702049001675.jpg?v=637172016121530000");
         isCreatedProduct = storeOwner.addProduct(productInformationOne) ? "created." : "not created.";
@@ -30,7 +31,7 @@ public class Main {
         System.out.println("Product search by name: " + storeOwner.findProductByName("Aguardiente Antiqueño Verde"));
 
         System.out.println("***** Product 2 *****");
-        PackagingDescription packagingDescriptionTwo = new PackagingDescription("Bolsa", 750.0, "ml");
+        PackagingDescription packagingDescriptionTwo = new PackagingDescription("Bolsa", 750.0, MeasureUnit.ML);
         Category categoryTwo = new Category("Vinos y Licores", false);
         ProductInformation productInformationTwo = new ProductInformation(2L,"Whiskey Jack Daniels Honey", packagingDescriptionTwo, categoryTwo, "Vodka", 107700.0, "https://jumbocolombiafood.vteximg.com.br/arquivos/ids/179058-1000-1000/Jack-Honey-750.jpg?v=636124971865400000");
         isCreatedProduct = storeOwner.addProduct(productInformationTwo) ? "created." : "not created.";
