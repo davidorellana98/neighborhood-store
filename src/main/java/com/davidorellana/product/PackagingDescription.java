@@ -4,9 +4,9 @@ public class PackagingDescription {
 
     private final String productForm;
     private final Double contentVolume;
-    private final String measureUnit;
+    private final MeasureUnit measureUnit;
 
-    public PackagingDescription(String productForm, Double contentVolume, String measureUnit) {
+    public PackagingDescription(String productForm, Double contentVolume, MeasureUnit measureUnit) {
         this.productForm = productForm;
         this.contentVolume = contentVolume;
         this.measureUnit = measureUnit;
@@ -20,7 +20,7 @@ public class PackagingDescription {
         return contentVolume;
     }
 
-    public String getMeasureUnit() {
+    public MeasureUnit getMeasureUnit() {
         return measureUnit;
     }
 
